@@ -13,7 +13,7 @@ function App() {
     [0, 0, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
-    [0, 0, 0, 0]
+    [0, 0, 0, 0],
   ]);
 
   const [gameOver, setGameOver] = useState(false);
@@ -259,7 +259,7 @@ function App() {
       [0, 0, 0, 0],
       [0, 0, 0, 0],
       [0, 0, 0, 0],
-      [0, 0, 0, 0]
+      [0, 0, 0, 0],
     ];
     addNumber(newGrid);
     addNumber(newGrid);
@@ -299,25 +299,22 @@ function App() {
   useEvent("keydown", handleKey);
 
   return (
-    <div className="flex items-start mt-10 m-auto justify-evenly">
-      <div className="bg-pink-500 flex flex-col flex-1 justify-end px-5">
-        <div>
-          <h1>2048</h1>
-        </div>
-        <div>
-          <h3>Join the tiles, get to 2048!</h3>
-        </div>
-        <div>
-          <h2>How to play:</h2>
-        </div>
-        <div>
-          <p>
-            Use your arrow keys to move the tiles. Tiles with the same number
-            merge into one when they touch. Add them up to reach 2048!
-          </p>
+    <div className=" flex flex-col justify-around text-center items-center m-2">
+      <div className="flex flex-col justify-around">
+        <h1 className="font-extrabold text-7xl">2048</h1>
+        <div className="flex flex-col m-5 md:flex-row md:justify-between">
+          <button className="md:mx-2 w-36 my-1 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            Score:
+          </button>
+          <button onClick={resetGame} className="md:mx-2 w-36 my-1 disable bg-pink-500 hover:bg-blue-400 text-white font-bold py-2 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            New Game
+          </button>
+          <button className="md:mx-2 w-36 my-1 disable bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            Best:
+          </button>
         </div>
       </div>
-      <div className="bg-red-900 max-w-max p-2 rounded  bg-opacity-60">
+      <div className="bg-red-900 rounded bg-opacity-60 p-1">
         {data.map((row, i) => {
           return (
             <div className="flex">
@@ -326,15 +323,8 @@ function App() {
               ))}
             </div>
           );
-        })}{" "}
+        })}
       </div>
-
-      <div className='bg-pink-300 flex-1 px-5'>
-          instruction bar
-          <h1>Score: </h1>
-          <h1>Best: </h1>
-          <button onClick={resetGame} className='text-white bg-gray-700'>New Game</button>
-          </div>
     </div>
   );
 }
